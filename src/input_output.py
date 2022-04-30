@@ -1,9 +1,6 @@
 import sys
 import cv2
-
-
-INPUT_DIR = 'input/'
-OUTPUT_DIR = 'output/'
+from consts import INPUT_DIR, OUTPUT_DIR
 
 
 def get_input_img_name_from_arguments():

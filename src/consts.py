@@ -1,5 +1,10 @@
 import numpy as np
 
+
+INPUT_DIR = 'input/'
+OUTPUT_DIR = 'output/'
+
+
 # Gaussian Kernels Matrices obtained from:
 # Shipitko, Oleg & Grigoryev, Anton. (2018). Gaussian filtering for FPGA based image processing with High-Level Synthesis tools. 
 # https://www.researchgate.net/publication/325768087_Gaussian_filtering_for_FPGA_based_image_processing_with_High-Level_Synthesis_tools.

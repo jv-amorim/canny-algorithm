@@ -1,4 +1,4 @@
-from gaussian import GAUSSIAN_KERNEL_5
+from consts import GAUSSIAN_KERNEL_5
 from input_output import get_input_img_name_from_arguments, read_input_img, save_output_img
 from kernel import apply_kernel_to_matrix
 from utils import ImageUtils
