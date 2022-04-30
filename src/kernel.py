@@ -12,7 +12,11 @@ def apply_kernel_to_matrix(kernel, matrix):
 
 
 class KernelApplier:
+
   def set_kernel(self, kernel):
+    if len(kernel.shape) != 2:
+      raise ValueError('The kernel matrix must have only two dimensions!')
+
     self.k_height, self.k_width = kernel.shape
 
     if self.k_height != self.k_width:
@@ -21,7 +25,10 @@ class KernelApplier:
     self.kernel = kernel
     self.k_radius =  floor(self.k_width / 2)
 
-  def set_input_matrix(self, matrix):    
+  def set_input_matrix(self, matrix):
+    if len(matrix.shape) != 2:
+      raise ValueError('The input matrix must have only two dimensions!')
+
     self.matrix = matrix
     self.m_height, self.m_width = matrix.shape
     self.new_matrix = np.zeros(matrix.shape)
