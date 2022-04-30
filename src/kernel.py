@@ -1,6 +1,5 @@
-from math import floor
-
 import numpy as np
+from math import floor
 
 
 def apply_kernel_to_matrix(kernel, matrix):
@@ -13,25 +12,32 @@ def apply_kernel_to_matrix(kernel, matrix):
 
 class KernelApplier:
 
+  def __init__(self):
+    self.kernel = None
+    self.matrix = None
+    self.result_matrix = None
+
+
   def set_kernel(self, kernel):
     if len(kernel.shape) != 2:
-      raise ValueError('The kernel matrix must have only two dimensions!')
+      raise ValueError('The kernel matrix must have only two dimensions.')
 
     self.k_height, self.k_width = kernel.shape
 
     if self.k_height != self.k_width:
-      raise ValueError('The kernel matrix must have a square format (width == height)!')
+      raise ValueError('The kernel matrix must have a square format (width == height).')
 
     self.kernel = kernel
     self.k_radius =  floor(self.k_width / 2)
 
   def set_input_matrix(self, matrix):
     if len(matrix.shape) != 2:
-      raise ValueError('The input matrix must have only two dimensions!')
+      raise ValueError('The input matrix must have only two dimensions.')
 
     self.matrix = matrix
     self.m_height, self.m_width = matrix.shape
-    self.new_matrix = np.zeros(matrix.shape)
+    self.result_matrix = np.zeros(matrix.shape)
+
 
   def apply_kernel(self):
     if self.kernel is None:
@@ -44,12 +50,9 @@ class KernelApplier:
         center_value = self.__calculate_value_for_current_matrix_coords(m_row_index, m_column_index)
         row_center_index = m_row_index + self.k_radius
         column_center_index = m_column_index + self.k_radius
-        self.new_matrix[row_center_index, column_center_index] = center_value
+        self.result_matrix[row_center_index, column_center_index] = center_value
 
     self.__fill_not_covered_pixels()
-
-  def get_result_matrix(self):
-    return self.new_matrix
 
   def __calculate_value_for_current_matrix_coords(self, m_row_index, m_column_index):
     current_sum = 0
@@ -73,6 +76,13 @@ class KernelApplier:
     )
 
     for row in not_covered_rows:
-      self.new_matrix[row, :] = self.matrix[row, :]
+      self.result_matrix[row, :] = self.matrix[row, :]
     for column in not_covered_columns:
-      self.new_matrix[:, column] = self.matrix[:, column]
+      self.result_matrix[:, column] = self.matrix[:, column]
+
+
+  def get_result_matrix(self):
+    if self.result_matrix is None:
+      raise ValueError('No result matrix have been found. Call the apply_kernel method before.')
+
+    return self.result_matrix
