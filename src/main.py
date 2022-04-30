@@ -1,7 +1,9 @@
 import sys
 
 import cv2
-import numpy as np
+
+from gaussian import GAUSSIAN_KERNEL_5
+from kernel import apply_kernel_to_matrix
 
 INPUT_DIR = 'input/'
 OUTPUT_DIR = 'output/'
@@ -12,6 +14,7 @@ def main():
   bgr_input_img = read_input_img(input_img_name)
   
   result_img = convert_bgr_img_to_grayscale(bgr_input_img)
+  result_img = apply_kernel_to_matrix(GAUSSIAN_KERNEL_5, result_img)
 
   save_output_img(result_img, input_img_name)
 
