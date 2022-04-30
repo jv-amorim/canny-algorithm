@@ -1,11 +1,14 @@
 import numpy as np
 
+# Input/Output:
 
 INPUT_DIR = 'input/'
 OUTPUT_DIR = 'output/'
 
 
-# Gaussian Kernels Matrices obtained from:
+# Gaussian Kernels:
+
+# Obtained from:
 # Shipitko, Oleg & Grigoryev, Anton. (2018). Gaussian filtering for FPGA based image processing with High-Level Synthesis tools. 
 # https://www.researchgate.net/publication/325768087_Gaussian_filtering_for_FPGA_based_image_processing_with_High-Level_Synthesis_tools.
 
@@ -26,3 +29,14 @@ GAUSSIAN_KERNEL_7 = np.array([[0,  0,  1,   2,  1,  0, 0],
                               [1, 13, 59,  97, 59, 13, 1],
                               [0,  3, 13,  22, 13,  3, 0],
                               [0,  0,  1,   2,  1,  0, 0]]) / 1003
+
+
+# Sobel Kernels:
+
+SOBEL_KERNEL_X = np.array([[-1,  0,  1],
+                           [-2,  0,  2], 
+                           [-1,  0,  1]])
+
+SOBEL_KERNEL_Y = np.array([[-1, -2, -1],
+                           [ 0,  0,  0], 
+                           [ 1,  2,  1]])
