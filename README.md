@@ -45,6 +45,10 @@ The output images will be stored in `output/` directory, which are:
 1. Before: <br> ![Egypt before](./docs/img/example-12.png)
 2. After: <br> ![Egypt before](./docs/img/example-13.png)
 
+## Python Notebook
+
+A step-by-step explanation (in portuguese) of the project code can be read in a [python notebook](./docs/canny-algorithm.ipynb) file.
+
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
