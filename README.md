@@ -22,28 +22,28 @@ The output images will be stored in `output/` directory, which are:
 
 ### Flower Image
 
-1. Input: <br> ![Input](./docs/example-1.png)
-2. Smoothed: <br> ![Smoothed](./docs/example-2.png)
-3. Horizontal gradient: <br> ![Horizontal gradient](./docs/example-3.png)
-4. Vertical gradient: <br> ![Vertical gradient](./docs/example-4.png)
-5. Gradient magnitude: <br> ![Gradient magnitude](./docs/example-5.png)
-6. Non-maximum suppressed: <br> ![non-maximum suppressed](./docs/example-6.png)
-7. **[Result]** Hysteresis thresholding: <br> ![Hysteresis thresholding](./docs/example-7.png)
+1. Input: <br> ![Input](./docs/img/example-1.png)
+2. Smoothed: <br> ![Smoothed](./docs/img/example-2.png)
+3. Horizontal gradient: <br> ![Horizontal gradient](./docs/img/example-3.png)
+4. Vertical gradient: <br> ![Vertical gradient](./docs/img/example-4.png)
+5. Gradient magnitude: <br> ![Gradient magnitude](./docs/img/example-5.png)
+6. Non-maximum suppressed: <br> ![non-maximum suppressed](./docs/img/example-6.png)
+7. **[Result]** Hysteresis thresholding: <br> ![Hysteresis thresholding](./docs/img/example-7.png)
 
 ### Bird Image
 
-1. Before: <br> ![Bird before](./docs/example-8.png)
-2. After: <br> ![Bird before](./docs/example-9.png)
+1. Before: <br> ![Bird before](./docs/img/example-8.png)
+2. After: <br> ![Bird before](./docs/img/example-9.png)
 
 ### Butterfly Image
 
-1. Before: <br> ![Butterfly before](./docs/example-10.png)
-2. After: <br> ![Butterfly before](./docs/example-11.png)
+1. Before: <br> ![Butterfly before](./docs/img/example-10.png)
+2. After: <br> ![Butterfly before](./docs/img/example-11.png)
 
 ### Egypt Image
 
-1. Before: <br> ![Egypt before](./docs/example-12.png)
-2. After: <br> ![Egypt before](./docs/example-13.png)
+1. Before: <br> ![Egypt before](./docs/img/example-12.png)
+2. After: <br> ![Egypt before](./docs/img/example-13.png)
 
 ## License
 
