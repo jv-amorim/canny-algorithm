@@ -1,5 +1,5 @@
-import sys
 import cv2
+import sys
 from consts import INPUT_DIR, OUTPUT_DIR
 
 
