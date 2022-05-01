@@ -43,8 +43,8 @@ class CannyEdgeDetector:
 
 
   def __calculate_gradient_with_sobel_kernels(self):
-    self.gradient_x = apply_kernel_to_matrix(SOBEL_KERNEL_X, self.img)
-    self.gradient_y = apply_kernel_to_matrix(SOBEL_KERNEL_Y, self.img)
+    self.gradient_x = apply_kernel_to_matrix(SOBEL_KERNEL_X, self.result_img)
+    self.gradient_y = apply_kernel_to_matrix(SOBEL_KERNEL_Y, self.result_img)
 
   def __calculate_gradient_magnitude(self):
     powered_gradients_sum = np.power(self.gradient_x, 2) + np.power(self.gradient_y, 2)
