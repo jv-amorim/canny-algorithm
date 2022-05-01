@@ -4,8 +4,8 @@ from kernel import apply_kernel_to_matrix
 from math import pi
 
 
-def apply_canny_edge_detector_to_img(img):
-  canny_edge_detector = CannyEdgeDetector()
+def apply_canny_edge_detector_to_img(img, low_threshold = None, high_threshold = None):
+  canny_edge_detector = CannyEdgeDetector(low_threshold, high_threshold)
   canny_edge_detector.set_input_img(img)
   canny_edge_detector.apply_edge_detector()
   return canny_edge_detector.get_result_imgs()
@@ -13,9 +13,12 @@ def apply_canny_edge_detector_to_img(img):
 
 class CannyEdgeDetector:
 
-  def __init__(self):
+  def __init__(self, low_threshold = None, high_threshold = None):
     self.img = None
     self.applied = False
+
+    self.low_threshold = 20 if (low_threshold is None) else low_threshold
+    self.high_threshold = self.low_threshold * 2 if (high_threshold is None) else high_threshold
 
 
   def set_input_img(self, img):
@@ -37,7 +40,7 @@ class CannyEdgeDetector:
     self.__calculate_gradient_magnitude()
     self.__calculate_gradient_direction()
     self.__perform_nonmaximum_suppression()
-    self.thresholded_img = np.zeros(self.img.shape)
+    self.__perform_hysteresis_thresholding()
 
 
   def __smooth_with_gaussian_kernel(self):
@@ -112,6 +115,30 @@ class CannyEdgeDetector:
       return '-45'
     if edge_angle < -157.5:
       return 'horizontal'
+
+
+  def __perform_hysteresis_thresholding(self):    
+    low_threshold_img = self.__apply_threshold(self.low_threshold)
+    high_threshold_img = self.__apply_threshold(self.high_threshold)
+
+    low_threshold_img -= high_threshold_img
+
+    edges_pixels_coords = np.transpose(np.nonzero(high_threshold_img))
+    valid_edge_pixels = np.full(self.img.shape, False)
+
+    for edge_pixel_coords in edges_pixels_coords:
+      for row_index in range(edge_pixel_coords[0], 3):
+        for column_index in range(edge_pixel_coords[1], 3):
+          if low_threshold_img[row_index, column_index] != 0:
+            valid_edge_pixels[row_index, column_index] = True
+
+    self.thresholded_img = np.where(valid_edge_pixels == False, high_threshold_img, low_threshold_img)
+
+  def __apply_threshold(self, threshold_value):
+    thresholded_img = np.copy(self.nonmaximum_suppressed_img)
+    thresholded_img[thresholded_img <= threshold_value] = 0
+    thresholded_img[thresholded_img > threshold_value] = 255
+    return thresholded_img
 
 
   def get_result_imgs(self):
