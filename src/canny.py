@@ -35,11 +35,22 @@ class CannyEdgeDetector:
 
     self.applied = True
 
+    print('Smoothing the image with Gaussian kernel...')
     self.__smooth_with_gaussian_kernel()
+
+    print('Calculating the gradients with Sobel kernels...')
     self.__calculate_gradient_with_sobel_kernels()
+
+    print('Calculating the gradient magnitude...')
     self.__calculate_gradient_magnitude()
+
+    print('Calculating the gradient direction...')
     self.__calculate_gradient_direction()
+
+    print('Performing the non-maximum suppression...')
     self.__perform_nonmaximum_suppression()
+
+    print('Performing the hysteresis thresholding...')
     self.__perform_hysteresis_thresholding()
 
 
